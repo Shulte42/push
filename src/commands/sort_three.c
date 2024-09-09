@@ -6,7 +6,7 @@
 /*   By: bruda-si <bruda-si@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 20:21:20 by bruda-si          #+#    #+#             */
-/*   Updated: 2024/09/09 12:44:39 by bruda-si         ###   ########.fr       */
+/*   Updated: 2024/09/09 13:43:37 by bruda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ void	sort_three(q_stack_struct **a)
 		ra(a, false);
 	else if ((*a)->next == biggest_node)
 		rra(a, false);
-	if ((*a)->number > (*a)->prev->number)
+	if ((*a)->number > (*a)->next->number)
 		sa(a, false);
 }

@@ -6,11 +6,11 @@
 /*   By: bruda-si <bruda-si@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 18:44:52 by bruda-si          #+#    #+#             */
-/*   Updated: 2024/09/05 20:22:05 by bruda-si         ###   ########.fr       */
+/*   Updated: 2024/09/07 15:22:30 by bruda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../inc/push_swap.h"
 
 static void	rotate_both(q_stack_struct **a,
 						q_stack_struct **b,

@@ -6,33 +6,26 @@
 /*   By: bruda-si <bruda-si@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 14:29:52 by bruda-si          #+#    #+#             */
-/*   Updated: 2024/09/06 15:17:38 by bruda-si         ###   ########.fr       */
+/*   Updated: 2024/09/09 11:55:24 by bruda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-#include "push_swap.h"
+#include "../inc/push_swap.h"
 
 void    free_stack(q_stack_struct **stack)
 {
-	q_stack_struct  *current;
 	q_stack_struct  *tmp;//To store the next node of the stack before is freed
 	
-	if (!stack)//Check if the stack is empty
+	if (!stack || !*stack)//Check if the stack is empty
 		return ;
-	current = *stack;
-	printf("%d", current->number);
-	while (stack)
+	while (*stack)
 	{
-		tmp = current->next;//Assign the current next node to the "tmp"
-		current->number = 0;
-		free(current);//Free the current node
-		current = tmp;//ann finally assing to the current the node saved in the "tmp"
+		tmp = (*stack)->next;//Assign the current next node to the "tmp"
+		free(*stack);//Free the current node
+		*stack = tmp;//ann finally assing to the current the node saved in the "tmp"
 	}
-	if (tmp)
-		printf("a\n");
-		
 	*stack = NULL;//set the stack pointer to the null
 }
 
@@ -53,7 +46,7 @@ int	syntax_error(char *str)
 int	error_duplicate(q_stack_struct *stack, int n)
 {
 	if (!stack)
-		return (1);
+		return (0);
 	while (stack)
 	{
 		if (stack->number == n)//check if the currnt

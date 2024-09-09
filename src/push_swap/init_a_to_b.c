@@ -6,11 +6,11 @@
 /*   By: bruda-si <bruda-si@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 12:12:37 by bruda-si          #+#    #+#             */
-/*   Updated: 2024/09/05 20:19:03 by bruda-si         ###   ########.fr       */
+/*   Updated: 2024/09/07 15:21:38 by bruda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../inc/push_swap.h"
 
 void    current_index(q_stack_struct *stack)
 {

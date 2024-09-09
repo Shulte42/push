@@ -6,11 +6,11 @@
 /*   By: bruda-si <bruda-si@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 19:16:19 by bruda-si          #+#    #+#             */
-/*   Updated: 2024/09/05 19:16:44 by bruda-si         ###   ########.fr       */
+/*   Updated: 2024/09/07 15:22:20 by bruda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../inc/push_swap.h"
 
 static void	push(q_stack_struct **dst, q_stack_struct **src) //Define a function that pushes a top node, from one stack to another's top node
 {

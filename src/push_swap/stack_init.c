@@ -6,11 +6,11 @@
 /*   By: bruda-si <bruda-si@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 15:14:30 by bruda-si          #+#    #+#             */
-/*   Updated: 2024/09/06 15:18:44 by bruda-si         ###   ########.fr       */
+/*   Updated: 2024/09/09 12:11:02 by bruda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../inc/push_swap.h"
 
 static long static_atoi(const char *string)//Define function that convert any string to a long value
 {

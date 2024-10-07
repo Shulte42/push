@@ -6,7 +6,7 @@
 /*   By: bruda-si <bruda-si@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 11:33:59 by bruda-si          #+#    #+#             */
-/*   Updated: 2024/09/09 12:45:22 by bruda-si         ###   ########.fr       */
+/*   Updated: 2024/10/07 13:09:46 by bruda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,12 @@ q_stack_struct	*find_smaller(q_stack_struct *stack)
 q_stack_struct *find_biggest(q_stack_struct *stack)
 {
 	long	biggest;
-	q_stack_struct *biggest_node;
-	
+	q_stack_struct *biggest_node;	
+
 	if (!stack)
 		return (NULL);
 	biggest = LONG_MIN;
-	while (stack->next)//Loop until the end of the stack is reached
+	while (stack)//Loop until the end of the stack is reached
 	{
 		if (stack->number > biggest)
 		{

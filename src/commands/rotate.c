@@ -6,7 +6,7 @@
 /*   By: bruda-si <bruda-si@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:01:58 by bruda-si          #+#    #+#             */
-/*   Updated: 2024/09/07 15:22:27 by bruda-si         ###   ########.fr       */
+/*   Updated: 2024/09/09 14:29:34 by bruda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ static void     rotate(q_stack_struct **stack)
 	last_node->next = *stack;
 	*stack = (*stack)->next;
 	(*stack)->prev = NULL;
-	last_node->prev->prev = last_node;
-	last_node->prev->next = NULL;
+	last_node->next->prev = last_node;
+	last_node->next->next = NULL;
 }
 
 void	ra(q_stack_struct **a, bool print)

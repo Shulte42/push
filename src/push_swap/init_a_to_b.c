@@ -6,7 +6,7 @@
 /*   By: bruda-si <bruda-si@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 12:12:37 by bruda-si          #+#    #+#             */
-/*   Updated: 2024/09/07 15:21:38 by bruda-si         ###   ########.fr       */
+/*   Updated: 2024/09/09 16:09:30 by bruda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	target_a(q_stack_struct *a, q_stack_struct *b)
 	{
 		current_b_node = b;
 		smallest_so_far = LONG_MIN;
-		while (b)
+		while (current_b_node)
 		{
 			if (current_b_node->number < a->number
 				&& current_b_node->number > smallest_so_far)
@@ -53,10 +53,10 @@ static void	target_a(q_stack_struct *a, q_stack_struct *b)
 					smallest_so_far = current_b_node->number;
 					target_b_node = current_b_node;	
 				}
-			b = b->next;
+			current_b_node = current_b_node->next;
 		}
 		if (smallest_so_far == LONG_MIN)
-			target_b_node = find_biggest(b);
+			a->target_node = find_biggest(b);
 		else 
 			a->target_node = target_b_node;
 		a = a->next;

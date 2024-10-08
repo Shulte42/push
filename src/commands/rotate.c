@@ -12,18 +12,23 @@
 
 #include "../inc/push_swap.h"
 
-static void     rotate(q_stack_struct **stack)
+static void rotate(q_stack_struct **stack)
 {
-	q_stack_struct *last_node;//Pointer to store the last node
+    q_stack_struct *first_node;
+    q_stack_struct *last_node;
 
-	if (!*stack || !(*stack)->next)
-		return ;
-	last_node = return_last_node(*stack);
-	last_node->next = *stack;
-	*stack = (*stack)->next;
-	(*stack)->prev = NULL;
-	last_node->next->prev = last_node;
-	last_node->next->next = NULL;
+    if (!*stack || !(*stack)->next)
+        return;
+
+    first_node = *stack;
+    last_node = return_last_node(*stack);
+
+    *stack = first_node->next;
+    (*stack)->prev = NULL;
+
+    last_node->next = first_node;
+    first_node->prev = last_node;
+    first_node->next = NULL;
 }
 
 void	ra(q_stack_struct **a, bool print)

@@ -56,7 +56,7 @@ q_stack_struct	*find_smaller(q_stack_struct *stack)
 	if (!stack)
 		return (NULL);
 	smaller = LONG_MAX;//Assing to the smallest value so far, the long max
-	while (stack->next)
+	while (stack)
 	{
 		if (stack->number < smaller)//Check if the current node valu is smaller the smallest so far
 		{

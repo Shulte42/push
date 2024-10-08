@@ -12,12 +12,10 @@
 
 #include "../inc/push_swap.h"
 
-static void	rotate_both(q_stack_struct **a,
-						q_stack_struct **b,
+static void	rotate_both(q_stack_struct **a, q_stack_struct **b, 
 						q_stack_struct *cheapest_node) //Define a function that rotates both the top `a` and `b` nodes to the bottom of their stacks, if it's the cheapest move
 {
-	while (*b != cheapest_node->target_node
-		&& *a != cheapest_node) //As long as the current `b` node is not `a` cheapest node's target node, and the current top `a` node is not the top node
+	while (*b != cheapest_node->target_node && *a != cheapest_node) //As long as the current `b` node is not `a` cheapest node's target node, and the current top `a` node is not the top node
 		rr(a, b, false); //Rotate both `a` and `b` nodes
 	current_index(*a);
 	current_index(*b);

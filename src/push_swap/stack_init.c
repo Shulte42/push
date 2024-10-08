@@ -12,7 +12,7 @@
 
 #include "../inc/push_swap.h"
 
-static long static_atoi(const char *string)//Define function that convert any string to a long value
+long static_atoi(const char *string, q_stack_struct **a, char **av, bool argc_2)//Define function that convert any string to a long value
 {
 	long	result;
 	int	sign;
@@ -30,6 +30,8 @@ static long static_atoi(const char *string)//Define function that convert any st
 	}
 	while (ft_isdigit(*string))
 		result = result * 10 + (*string++ - '0');
+	if (result * sign > INT_MAX || result * sign < INT_MIN)
+		free_errors(a, av, argc_2);
 	return(result * sign);
 }
 
@@ -68,7 +70,7 @@ void    init_stack_a(q_stack_struct **a, char **av, bool argc_2)// Function that
 	{
 		if (syntax_error(av[i]))//Check for syntax errors
 			free_errors(a, av, argc_2);
-		number = static_atoi(av[i]);//Take the string and pass to integer
+		number = static_atoi(av[i], a, av, argc_2);//Take the string and pass to integer
 		if (number > INT_MAX || number < INT_MIN)//Check for overflow
 			free_errors(a, av, argc_2);
 		if (error_duplicate(*a, (int)number))//Check if there are duplicate numbers

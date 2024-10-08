@@ -70,6 +70,6 @@ void	free_errors(q_stack_struct **a, char **av, bool argc_2) //Define a function
 	free_stack(a);
 	if (argc_2)
 		free_mat(av);
-	ft_printf("Error\n");
+	write(2, "Error\n", 6);
 	exit(1);
 }

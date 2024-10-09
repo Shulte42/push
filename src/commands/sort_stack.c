@@ -3,23 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   sort_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bruda-si <bruda-si@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: shulte <shulte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 18:44:52 by bruda-si          #+#    #+#             */
-/*   Updated: 2024/09/07 15:22:30 by bruda-si         ###   ########.fr       */
+/*   Updated: 2024/10/09 11:02:54 by shulte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
-
-static void	rotate_both(q_stack_struct **a, q_stack_struct **b, 
-						q_stack_struct *cheapest_node) //Define a function that rotates both the top `a` and `b` nodes to the bottom of their stacks, if it's the cheapest move
-{
-	while (*b != cheapest_node->target_node && *a != cheapest_node) //As long as the current `b` node is not `a` cheapest node's target node, and the current top `a` node is not the top node
-		rr(a, b, false); //Rotate both `a` and `b` nodes
-	current_index(*a);
-	current_index(*b);
-}
 
 static void	rev_rotate_both(q_stack_struct **a,
 								q_stack_struct **b,
@@ -36,7 +27,7 @@ static void	move_a_to_b(q_stack_struct **a, q_stack_struct **b) //Define a funct
 {
 	q_stack_struct	*cheapest_node; //To store the pointer to the cheapest `a` node
 
-	cheapest_node = find_the_cheapest(*a); 
+	cheapest_node = find_the_cheapest(*a);
 	if (cheapest_node->above_median 
 		&& cheapest_node->target_node->above_median) //If both the cheapest `a` node and its target `b` node are above the median
 		rotate_both(a, b, cheapest_node);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bruda-si <bruda-si@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: shulte <shulte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 11:33:59 by bruda-si          #+#    #+#             */
-/*   Updated: 2024/10/07 13:09:46 by bruda-si         ###   ########.fr       */
+/*   Updated: 2024/10/09 10:24:38 by shulte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ q_stack_struct	*find_smaller(q_stack_struct *stack)
 
 q_stack_struct *find_biggest(q_stack_struct *stack)
 {
-	long	biggest;
-	q_stack_struct *biggest_node;	
+	long			biggest;
+	q_stack_struct	*biggest_node;	
 
 	if (!stack)
 		return (NULL);
@@ -81,7 +81,7 @@ q_stack_struct *find_biggest(q_stack_struct *stack)
 		if (stack->number > biggest)
 		{
 			biggest = stack->number;//Update the biggest value so far
-			biggest_node = stack;//Set the pointe to point to the node with the biggest value so far
+			biggest_node = stack;//Set the pointer to point to the node with the biggest value so far
 		}
 		stack = stack->next;//Move the stack for processing
 	}

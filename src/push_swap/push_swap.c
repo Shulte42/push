@@ -3,23 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bruda-si <bruda-si@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: shulte <shulte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 14:17:56 by bruda-si          #+#    #+#             */
-/*   Updated: 2024/09/09 14:53:20 by bruda-si         ###   ########.fr       */
+/*   Updated: 2024/10/09 09:46:30 by shulte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-void print_numbers(q_stack_struct *a)
-	{
-    q_stack_struct *current = a;
-    while (current != NULL) {
-        printf("%d\n", current->number);
-        current = current->next;
-    }
-}
 int main(int ac, char **av)
 {
 	q_stack_struct *a;//To store a pointer to stack 'a'
@@ -45,8 +37,6 @@ int main(int ac, char **av)
 		else
 			sort_stack(&a, &b);//if not sorted, and there are more than 3 numbers, we call the sort algorithm
 	}
-	//
-	//print_numbers(a);
-	free_stack(&a);//free the stack 'a'
+	free_stack(&a);
 	return (0);
 }

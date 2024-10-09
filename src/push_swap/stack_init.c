@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bruda-si <bruda-si@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: shulte <shulte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 15:14:30 by bruda-si          #+#    #+#             */
-/*   Updated: 2024/09/09 12:11:02 by bruda-si         ###   ########.fr       */
+/*   Updated: 2024/10/09 11:05:59 by shulte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,29 +92,6 @@ q_stack_struct *find_the_cheapest(q_stack_struct *stack)//define a function that
 		stack = stack->next;//Move the stack for processing
 	}
 	return (NULL);
-}
-
-void	prep_for_push(q_stack_struct **stack,
-						q_stack_struct *top_node,
-						char stack_name) //Define a function that moves the required node to the top of the stack
-{
-	while (*stack != top_node) //Check if the required node is not already the first node
-	{
-		if (stack_name == 'a') //If not, and it is stack `a`, execute the following
-		{
-			if (top_node->above_median)
-				ra(stack, false);
-			else
-				rra(stack, false);
-		}
-		else if (stack_name == 'b') //If not, and it is stack `b`, execute the following
-		{
-			if (top_node->above_median)
-				rb(stack, false);
-			else
-				rrb(stack, false);
-		}	
-	}
 }
 
 void	prepare_for_push(q_stack_struct **stack,

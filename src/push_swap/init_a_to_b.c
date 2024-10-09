@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_a_to_b.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bruda-si <bruda-si@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: shulte <shulte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 12:12:37 by bruda-si          #+#    #+#             */
-/*   Updated: 2024/09/09 16:09:30 by bruda-si         ###   ########.fr       */
+/*   Updated: 2024/10/09 10:48:05 by shulte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,37 +33,43 @@ void    current_index(q_stack_struct *stack)
 	}
 }
 
-static void	target_a(q_stack_struct *a, q_stack_struct *b)
+static q_stack_struct	*find_target(q_stack_struct *a, q_stack_struct *b)
 {
 	q_stack_struct	*current_b_node;
 	q_stack_struct	*target_b_node;
 	long			smallest_so_far;
+
+	smallest_so_far = LONG_MIN;
+	current_b_node = b;
+	while (current_b_node)
+	{
+		if (current_b_node->number < a->number 
+			&& current_b_node->number > smallest_so_far)
+			{
+				smallest_so_far = current_b_node->number;
+				target_b_node = current_b_node;
+			}
+		current_b_node = current_b_node->next;
+	}
+	if (smallest_so_far == LONG_MIN)
+		return (find_biggest(b));
+	else
+		return (target_b_node);
 	
+}
+
+void	target_a(q_stack_struct *a, q_stack_struct *b)
+{
 	if (!a || !b)
 		return ;
 	while (a)
 	{
-		current_b_node = b;
-		smallest_so_far = LONG_MIN;
-		while (current_b_node)
-		{
-			if (current_b_node->number < a->number
-				&& current_b_node->number > smallest_so_far)
-				{
-					smallest_so_far = current_b_node->number;
-					target_b_node = current_b_node;	
-				}
-			current_b_node = current_b_node->next;
-		}
-		if (smallest_so_far == LONG_MIN)
-			a->target_node = find_biggest(b);
-		else 
-			a->target_node = target_b_node;
+		a->target_node = find_target(a, b);
 		a = a->next;
 	}
 }
 
-static void	cost_analysis_a(q_stack_struct *a, q_stack_struct *b) //Define a functio that analyses the cost of the `a` node along with it's target `b` node, which is the sum of the number of instructions for both the nodes to rotate to the top of their stacks
+void	cost_analysis_a(q_stack_struct *a, q_stack_struct *b) //Define a functio that analyses the cost of the `a` node along with it's target `b` node, which is the sum of the number of instructions for both the nodes to rotate to the top of their stacks
 {
 	int	length_a; //To store the lengthgth of stack `a`
 	int	length_b; //To store the lengthgth of stack `b`
@@ -103,11 +109,3 @@ void	set_cheapest(q_stack_struct *stack) //Define a function that sets a node's 
 	cheapest_node->cheapest = true; //After iterating through the stack, if no cheaper node is found than the current, then set the cheapest node's `cheapest` attribut to `true` in the data structure
 }
 
-void	init_nodes_a(q_stack_struct *a, q_stack_struct *b) //Define a function that combines all the functions needed to prepare stack `a`, ready for our pushing and sorting. These functions set the data inside the node's structure
-{
-	current_index(a);
-	current_index(b);
-	target_a(a, b);
-	cost_analysis_a(a, b);
-	set_cheapest(a);
-}

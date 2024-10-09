@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_b_to_a.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bruda-si <bruda-si@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: shulte <shulte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 19:05:32 by bruda-si          #+#    #+#             */
-/*   Updated: 2024/09/05 20:20:01 by bruda-si         ###   ########.fr       */
+/*   Updated: 2024/10/09 10:01:25 by shulte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,13 @@ void	init_nodes_b(q_stack_struct *a, q_stack_struct *b) //Define a function that
 	current_index(a);
 	current_index(b);
 	set_target_b(a, b);
+}
+
+void	init_nodes_a(q_stack_struct *a, q_stack_struct *b) //Define a function that combines all the functions needed to prepare stack `a`, ready for our pushing and sorting. These functions set the data inside the node's structure
+{
+	current_index(a);
+	current_index(b);
+	target_a(a, b);
+	cost_analysis_a(a, b);
+	set_cheapest(a);
 }

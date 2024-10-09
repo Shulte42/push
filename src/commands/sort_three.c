@@ -6,16 +6,15 @@
 /*   By: bruda-si <bruda-si@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 20:21:20 by bruda-si          #+#    #+#             */
-/*   Updated: 2024/10/07 13:10:16 by bruda-si         ###   ########.fr       */
+/*   Updated: 2024/10/08 11:52:01 by bruda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../inc/push_swap.h"
 
-void	sort_three(q_stack_struct **a)
+void	sort_three(t_node **a)
 {
-	q_stack_struct	*biggest_node;
+	t_node	*biggest_node;
 
 	biggest_node = find_biggest(*a);
 	if (biggest_node == *a)

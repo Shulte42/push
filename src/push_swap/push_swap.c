@@ -3,39 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shulte <shulte@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bruda-si <bruda-si@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 14:17:56 by bruda-si          #+#    #+#             */
-/*   Updated: 2024/10/09 09:46:30 by shulte           ###   ########.fr       */
+/*   Updated: 2024/10/08 11:52:43 by bruda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	q_stack_struct *a;//To store a pointer to stack 'a'
-	q_stack_struct *b;
+	t_node	*a;
+	t_node	*b;
+
 	a = NULL;
 	b = NULL;
-	
-	if(ac == 1 || (ac == 2 && !av[1][0])) //|| (ac == 2 && !av[1][0]))//Check for incorrect argument count or if the second argument is '0'
-		return (1); //Return error
+	if (ac == 1 || (ac == 2 && !av[1][0]))
+		return (1);
 	else if (ac == 2)
 	{
-		av = ft_split(av[1], ' ');//Split the string in substrings
+		av = ft_split(av[1], ' ');
 		init_stack_a(&a, av, ac == 2);
 	}
-	else 
-		init_stack_a(&a, av + 1, ac == 2);//Initiate the stack 'a' and handle errors
-	if (!check_if_is_sorted(a))//check if the stack is sorted
+	else
+		init_stack_a(&a, av + 1, ac == 2);
+	if (!check_if_is_sorted(a))
 	{
-		if (stack_length(a) == 2) // if not sorted, and there are two numbers, swap the first two nodes
+		if (stack_length(a) == 2)
 			sa(&a, false);
-		else if (stack_length(a) == 3)// if not sorted, and trere are three number, use the sort three algorithm
+		else if (stack_length(a) == 3)
 			sort_three(&a);
 		else
-			sort_stack(&a, &b);//if not sorted, and there are more than 3 numbers, we call the sort algorithm
+			sort_stack(&a, &b);
 	}
 	free_stack(&a);
 	return (0);

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shulte <shulte@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bruda-si <bruda-si@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 11:33:59 by bruda-si          #+#    #+#             */
-/*   Updated: 2024/10/09 10:24:38 by shulte           ###   ########.fr       */
+/*   Updated: 2024/10/08 12:01:38 by bruda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-q_stack_struct *return_last_node(q_stack_struct *stack)// Function that returns the pointer to the last node of the stack
+t_node	*return_last_node(t_node *stack)
 {
 	if (!stack)
 		return (NULL);
@@ -21,70 +21,70 @@ q_stack_struct *return_last_node(q_stack_struct *stack)// Function that returns 
 	return (stack);
 }
 
-int	stack_length(q_stack_struct *stack)// Function that returns the length of the stack
+int	stack_length(t_node *stack)
 {
 	int	length;
-	
+
 	length = 0;
 	if (!stack)
 		return (0);
 	while (stack)
 	{
 		stack = stack->next;
-		length++;//rotate the top 'a' node to the bottom of the stack, and print the instruction
+		length++;
 	}
 	return (length);
 }
-bool	check_if_is_sorted(q_stack_struct *stack)//Function that check if the stack is already sorted
+
+bool	check_if_is_sorted(t_node *stack)
 {
-	if (!stack)// Check if the stack is empty
+	if (!stack)
 		return (NULL);
-	while (stack->next)//Loop until the end of the stack is reached
+	while (stack->next)
 	{
-		if (stack->number > stack->next->number)//check if the currently number is larger them the next node
+		if (stack->number > stack->next->number)
 			return (false);
-		stack = stack->next;//Move the stack for processing
+		stack = stack->next;
 	}
 	return (true);
 }
 
-q_stack_struct	*find_smaller(q_stack_struct *stack)
+t_node	*find_smaller(t_node *stack)
 {
-	long	smaller;//To store the minimum value so far
-	q_stack_struct	*smaller_node;//Pointer to the smallest value in the stack
-	
+	t_node	*smaller_node;
+	long	smaller;
+
 	if (!stack)
 		return (NULL);
-	smaller = LONG_MAX;//Assing to the smallest value so far, the long max
+	smaller = LONG_MAX;
 	while (stack)
 	{
-		if (stack->number < smaller)//Check if the current node valu is smaller the smallest so far
+		if (stack->number < smaller)
 		{
-			smaller = stack->number;//If so, update the biggest number so far
-			smaller_node = stack;//And assing the pointer to the smallest node
+			smaller = stack->number;
+			smaller_node = stack;
 		}
-		stack = stack->next;//Move the stack for processing
+		stack = stack->next;
 	}
 	return (smaller_node);
 }
 
-q_stack_struct *find_biggest(q_stack_struct *stack)
+t_node	*find_biggest(t_node *stack)
 {
-	long			biggest;
-	q_stack_struct	*biggest_node;	
+	t_node	*biggest_node;	
+	long	biggest;
 
 	if (!stack)
 		return (NULL);
 	biggest = LONG_MIN;
-	while (stack)//Loop until the end of the stack is reached
+	while (stack)
 	{
 		if (stack->number > biggest)
 		{
-			biggest = stack->number;//Update the biggest value so far
-			biggest_node = stack;//Set the pointer to point to the node with the biggest value so far
+			biggest = stack->number;
+			biggest_node = stack;
 		}
-		stack = stack->next;//Move the stack for processing
+		stack = stack->next;
 	}
 	return (biggest_node);
-	
 }

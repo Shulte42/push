@@ -6,7 +6,7 @@
 /*   By: bruda-si <bruda-si@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:01:58 by bruda-si          #+#    #+#             */
-/*   Updated: 2024/10/09 15:14:40 by bruda-si         ###   ########.fr       */
+/*   Updated: 2024/10/08 11:51:38 by bruda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,6 @@ static void	rotate(t_node **stack)
 	last_node->next = first_node;
 	first_node->prev = last_node;
 	first_node->next = NULL;
-}
-
-void	rotate_both(t_node **a, t_node **b,
-						t_node *cheapest_node)
-{
-	while (*b != cheapest_node->target_node && *a != cheapest_node)
-		rr(a, b, false);
-	current_index(*a);
-	current_index(*b);
 }
 
 void	ra(t_node **a, bool print)

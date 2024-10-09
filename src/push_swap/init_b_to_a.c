@@ -6,11 +6,24 @@
 /*   By: bruda-si <bruda-si@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 19:05:32 by bruda-si          #+#    #+#             */
-/*   Updated: 2024/10/09 15:12:33 by bruda-si         ###   ########.fr       */
+/*   Updated: 2024/10/09 17:09:10 by bruda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
+
+t_node	*find_the_cheapest(t_node *stack)
+{
+	if (!stack)
+		return (NULL);
+	while (stack)
+	{
+		if (stack->cheapest)
+			return (stack);
+		stack = stack->next;
+	}
+	return (NULL);
+}
 
 void	current_index(t_node *stack)
 {

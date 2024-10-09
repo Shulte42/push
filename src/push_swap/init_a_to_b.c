@@ -6,13 +6,13 @@
 /*   By: bruda-si <bruda-si@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 12:12:37 by bruda-si          #+#    #+#             */
-/*   Updated: 2024/10/09 15:12:26 by bruda-si         ###   ########.fr       */
+/*   Updated: 2024/10/09 17:01:23 by bruda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-static t_node	*find_targed_b_node(t_node *a, t_node *b)
+static t_node	*find_target(t_node	*a, t_node *b)
 {
 	t_node	*current_b_node;
 	t_node	*target_b_node;
@@ -22,8 +22,8 @@ static t_node	*find_targed_b_node(t_node *a, t_node *b)
 	smallest_so_far = LONG_MIN;
 	while (current_b_node)
 	{
-		if (current_b_node->number > a->number
-			&& current_b_node->number < smallest_so_far)
+		if (current_b_node->number < a->number
+			&& current_b_node->number > smallest_so_far)
 		{
 			smallest_so_far = current_b_node->number;
 			target_b_node = current_b_node;
@@ -42,7 +42,7 @@ static void	target_a(t_node *a, t_node *b)
 		return ;
 	while (a)
 	{
-		a->target_node = find_targed_b_node(a, b);
+		a->target_node = find_target(a, b);
 		a = a->next;
 	}
 }

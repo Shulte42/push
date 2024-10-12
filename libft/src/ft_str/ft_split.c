@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bruda-si <bruda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bruda-si <bruda-si@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 12:19:04 by bruda-si          #+#    #+#             */
-/*   Updated: 2023/10/23 16:51:50 by bruda-si         ###   ########.fr       */
+/*   Updated: 2024/10/12 12:37:32 by bruda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,16 @@ int	ft_wordlen(const char *str, char sep)
 	return (i);
 }
 
+static void	free_list(char **list, int position)
+{
+	while (position >= 0)
+	{
+		free(list[position]);
+		position--;
+	}
+	free(list);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	int			position;
@@ -59,8 +69,11 @@ char	**ft_split(char const *s, char c)
 		while (*s == c)
 			s++;
 		list[position] = ft_substr(s, 0, ft_wordlen(s, c));
-		if (!list)
-			break ;
+		if (!list[position])
+		{
+			free_list(list, position - 1);
+			return (NULL);
+		}
 		s += ft_wordlen(s, c);
 		position++;
 		words--;

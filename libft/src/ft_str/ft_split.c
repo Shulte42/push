@@ -6,11 +6,41 @@
 /*   By: bruda-si <bruda-si@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 12:19:04 by bruda-si          #+#    #+#             */
-/*   Updated: 2024/10/12 12:37:32 by bruda-si         ###   ########.fr       */
+/*   Updated: 2024/10/12 14:07:04 by bruda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdbool.h>
+#include <limits.h>
+
+bool	is_numeric(char *s)
+{
+	int		nb;
+
+	nb = ft_atoi(s);
+	if (nb >= INT_MIN && nb <= INT_MAX)
+		return (true);
+	else
+		return (false);
+}
+
+static void	free_list(char **list, int position)
+{
+	int		i;
+	
+	i = 0;
+	while (list[i] && position >= 0)
+	{
+		if (!is_numeric(list[i]))
+		{
+			free(list[position]);
+			position--;
+		}			
+	}
+	free(list);
+	exit(EXIT_FAILURE);
+}
 
 static int	ft_count_words(char const *str, char sep)
 {
@@ -42,15 +72,6 @@ int	ft_wordlen(const char *str, char sep)
 	return (i);
 }
 
-static void	free_list(char **list, int position)
-{
-	while (position >= 0)
-	{
-		free(list[position]);
-		position--;
-	}
-	free(list);
-}
 
 char	**ft_split(char const *s, char c)
 {
@@ -59,6 +80,8 @@ char	**ft_split(char const *s, char c)
 	char		**list;
 
 	words = ft_count_words(s, c);
+	if (words == 0)
+		exit(EXIT_FAILURE);
 	list = (char **)malloc((ft_count_words(s, c) + 1) * sizeof(char *));
 	if (!list)
 		return (NULL);
@@ -70,10 +93,7 @@ char	**ft_split(char const *s, char c)
 			s++;
 		list[position] = ft_substr(s, 0, ft_wordlen(s, c));
 		if (!list[position])
-		{
 			free_list(list, position - 1);
-			return (NULL);
-		}
 		s += ft_wordlen(s, c);
 		position++;
 		words--;
